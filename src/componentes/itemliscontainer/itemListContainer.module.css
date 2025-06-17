@@ -1,0 +1,10 @@
+.secIphones {
+    background-color: #070707;
+    color: rgb(0, 0, 0);
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: auto;
+    row-gap: 1.5rem;
+}
