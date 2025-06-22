@@ -9,11 +9,11 @@ return (
     </div>
 
     <div className={styles.containerLinks}>
-        <Link className={styles.link} to='/'>Inicio</Link>
-        <Link className={styles.link} to="/iphones">iPhones</Link>
-        <Link className={styles.link} to="/ipads">iPads</Link>
-        <Link className={styles.link} to="/accesorios">Accesorios</Link>
-        <Link className={styles.link} to="/contacto">Contacto</Link>
+        <Link className={styles.linkk} to='/'>Inicio</Link>
+        <Link className={styles.linkk} to="/iphones">iPhones</Link>
+        <Link className={styles.linkk} to="/ipads">iPads</Link>
+        <Link className={styles.linkk} to="/accesorios">Accesorios</Link>
+        <Link className={styles.linkk} to="/contacto">Contacto</Link>
     </div>
 
     <div style={{ flex: 0.4, display: 'flex', }}>

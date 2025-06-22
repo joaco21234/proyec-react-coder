@@ -8,14 +8,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<ItemListContainer bienvenida="¡Bienvenido a la tienda!" />} />
-        <Route path="/:categoria" element={<ItemListContainer bienvenida="¡Bienvenido a la tienda de iPhones!" />} />
-        <Route path="/:categoria" element={<ItemListContainer bienvenida="¡Bienvenido a la tienda de iPads!" />} />
-        <Route path="/:categoria" element={<ItemListContainer bienvenida="¡Bienvenido a la tienda de Accesorios!" />} />
-        <Route path="/:categoria" element={<ItemListContainer bienvenida="¡Bienvenido a la sección de Contacto!" />} />
-        <Route path="*" element={<ItemListContainer bienvenida="¡Página no encontrada!" />} />
+        <Route path="/:categoria" element={<ItemListContainer bienvenida="¡Bienvenido a la tienda!" />} />
       </Routes>
-      <>
-      </>
     </BrowserRouter>
   )
 }
