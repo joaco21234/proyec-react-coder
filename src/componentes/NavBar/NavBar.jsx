@@ -14,7 +14,7 @@ function NavBar() {
         <>
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                <img src="./public/img/titulo-igold1.png" alt="Logo" />
+                <img src="/img/titulo-igold1.png" alt="Logo" />
             </div>
             <div className={styles.containerLinks}>
             <Link className={styles.linkk} to='/'>Inicio</Link>
