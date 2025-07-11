@@ -27,7 +27,9 @@
 
 ---
 
-## 📦 Estructura de proyecto
+## 📁 Estructura del Proyecto
+
+```bash
 ├── node_modules/
 ├── public/
 │   ├── img/
@@ -66,7 +68,10 @@
 ├── package.json
 ├── README.md
 └── vite.config.js
+```
 
+
+---
 
 ## 🛠️ Funcionalidades principales
 
