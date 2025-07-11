@@ -18,6 +18,6 @@ export const createOrder = async (orderData) => {
         return docRef.id;
     } catch (error) {
         console.error("Error al crear la orden:", error);
-        throw error; // Re-lanza el error para que lo maneje quien llame la función
+        throw error;
     }
 };

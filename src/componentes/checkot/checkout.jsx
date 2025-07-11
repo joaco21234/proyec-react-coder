@@ -30,6 +30,30 @@ function Checkout({ cart, total, onConfirm, onBack }) {
         return;
     }
 
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailValido) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Email inválido',
+            text: 'Por favor ingresá un email válido.',
+            background: '#000',
+            color: '#fff'
+        });
+        return;
+    }
+
+    const telefonoValido = /^[0-9]{6,15}$/.test(telefono);
+    if (!telefonoValido) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Teléfono inválido',
+            text: 'El número de teléfono debe tener solo números (mínimo 6 dígitos).',
+            background: '#000',
+            color: '#fff'
+        });
+        return;
+    }
+
     try {
         const orderId = await createOrder({
             nombre,
@@ -60,7 +84,6 @@ function Checkout({ cart, total, onConfirm, onBack }) {
         });
     }
 };
-
 
     return (
         <div>

@@ -36,19 +36,21 @@ function ItemList({ productos }) {
         <button
             className={styles.cardButton}
             onClick={() => {
-            agregarAlCarrito(producto);
+    const agregado = agregarAlCarrito(producto);
 
-            Swal.fire({
-                toast: true,
-                position: 'center',
-                icon: 'success',
-                title: `${producto.nombre.toUpperCase()} AGREGADO AL CARRITO`,
-                showConfirmButton: false,
-                timer: 1600,
-                background: '#ff9800',
-                color: '#000',
-                });
-            }}
+    if (agregado) {
+        Swal.fire({
+            toast: true,
+            position: 'center',
+            icon: 'success',
+            title: `${producto.nombre.toUpperCase()} AGREGADO AL CARRITO`,
+            showConfirmButton: false,
+            timer: 1600,
+            background: '#ff9800',
+            color: '#000',
+        });
+    }
+}}
         >
             Agregar al carrito
         </button>
