@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
+import { createOrder } from '../../firebase/db';
+import { serverTimestamp } from "firebase/firestore";
 
 function Checkout({ cart, total, onConfirm, onBack }) {
     const [formData, setFormData] = useState({
@@ -14,22 +16,51 @@ function Checkout({ cart, total, onConfirm, onBack }) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = () => {
-        const { nombre, email, telefono } = formData;
+    const handleSubmit = async () => {
+    const { nombre, email, telefono } = formData;
 
-        if (!nombre || !email || !telefono) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Faltan datos',
-                text: 'Por favor completá todos los campos antes de confirmar la compra.',
-                background: '#000',
-                color: '#fff'
-            });
-            return;
-        }
+    if (!nombre || !email || !telefono) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Faltan datos',
+            text: 'Por favor completá todos los campos antes de confirmar la compra.',
+            background: '#000',
+            color: '#fff'
+        });
+        return;
+    }
 
-        onConfirm(formData);
-    };
+    try {
+        const orderId = await createOrder({
+            nombre,
+            email,
+            telefono,
+            cart,
+            total,
+            time: serverTimestamp()
+        });
+
+        Swal.fire({
+            icon: 'success',
+            title: '¡Compra confirmada!',
+            text: `Tu número de orden es: ${orderId}`,
+            background: '#000',
+            color: '#fff'
+        });
+
+        onConfirm({ ...formData, orderId });
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al crear la orden',
+            text: 'Ocurrió un problema al procesar la compra. Intentalo de nuevo.',
+            background: '#000',
+            color: '#fff'
+        });
+    }
+};
+
 
     return (
         <div>
