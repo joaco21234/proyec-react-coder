@@ -1,17 +1,17 @@
 .containerCards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    align-content: center;
     gap: 24px;
-    margin: 68px;
     gap: 20px;
+    margin-top: 140px;
+    padding-left: 85px;
 }
 
 .card {
     width: 220px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    background: #fff;
+    background: #1b1b1b;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -50,6 +50,7 @@
     font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 8px;
+    color: aliceblue;
 }
 
 .cardText {
@@ -69,4 +70,9 @@
     transition-duration: 300ms;
     background-color: #495050;
     box-shadow: 0 0 10px #000000;
+}
+.swal-description {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-align: center;
 }

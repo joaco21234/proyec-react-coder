@@ -1,0 +1,37 @@
+.Offcanvas {
+    background-color: rgb(32, 32, 32);
+}
+
+.Header {
+    background-color: rgb(58, 53, 53);
+    border-bottom: 1px solid rgba(240, 240, 240, 0.1);
+    justify-content: center;
+    text-align: center;
+}
+
+.productoItem {
+    background: #111 !important;
+    color: #fff !important;
+    border: none;
+}
+
+.swal2-title-swal2-title {
+    color: #e6dddd !important;
+}
+
+.Title {
+    color: #e6dddd !important;
+    text-align: center !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+}
+
+p {
+    color: #e6dddd;
+    text-align: center;
+}
+
+h5 {
+    color: #e6dddd !important;
+    text-align: center;
+} 
