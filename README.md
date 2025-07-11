@@ -1,12 +1,108 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛍️ Igol - Ecommerce de tecnología
 
-Currently, two official plugins are available:
+**Igol** es un ecommerce de productos tecnológicos, desarrollado como proyecto final para un curso de programación web. Permite explorar productos, agregarlos al carrito y completar la compra mediante un formulario. El frontend está hecho en React y se conecta a Firebase para el manejo de productos y órdenes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚛️ [React](https://reactjs.org/)
+- ⚡ [Vite](https://vitejs.dev/)
+- 🎨 [React-Bootstrap](https://react-bootstrap.github.io/)
+- 🔥 [Firebase (Firestore)](https://firebase.google.com/)
+- 💬 [SweetAlert2](https://sweetalert2.github.io/)
+
+---
+
+## 📦 Dependencias principales
+- `react`
+- `react-dom`
+- `react-bootstrap`
+- `bootstrap`
+- `firebase`
+- `sweetalert2`
+- `react-router-dom`
+- `vite`
+
+---
+
+## 📦 Estructura de proyecto
+├── node_modules/
+├── public/
+│   ├── img/
+│   └── error.js
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── componentes/
+│   │   ├── CartOffcanvas.jsx
+│   │   ├── CartWidget.jsx
+│   │   ├── checkout/
+│   │   ├── itemlist/
+│   │   ├── NavBar.jsx
+│   │   └── ItemDetailContainer.jsx
+│   ├── contacto/
+│   │   ├── contacto.js
+│   │   └── form.html
+│   ├── context/
+│   │   ├── CartContext.js
+│   │   └── CartProvider.jsx
+│   ├── data/
+│   │   └── productos.jsx
+│   ├── firebase/
+│   │   ├── config.js
+│   │   └── db.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   ├── itemListContainer.jsx
+│   ├── main.jsx
+├── .gitignore
+├── CLAUDE.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
+
+
+## 🛠️ Funcionalidades principales
+
+- Listado de productos obtenidos desde Firebase.
+- Filtro por categoría usando React Router.
+- Agregar productos al carrito.
+- Eliminar productos del carrito individualmente o vaciarlo por completo.
+- Carrito accesible mediante botón tipo "offcanvas".
+- Checkout con validación de formulario.
+- Creación de orden de compra en Firestore.
+- Confirmación de compra con número de orden.
+
+---
+
+## 🌐 Demo en producción
+
+📦 ¡Podés probar la app en vivo en Vercel!  
+👉 [https://igol.vercel.app](https://igol.vercel.app)  
+_(Reemplazá este link si usás otro dominio)_
+
+---
+
+## ⚙️ Instalación local
+
+Si querés probar el proyecto en tu máquina:
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/igol.git
+
+# Entrar a la carpeta del proyecto
+cd igol
+
+# Instalar dependencias
+npm install
+
+# Ejecutar el servidor de desarrollo
+npm run dev
+
