@@ -1,8 +1,7 @@
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getProductoPorId } from "../data/productos";
-import ItemList from "./itemlist/ItemList";
+import { getProductById } from "../firebase/db"; 
+import ItemDetail from "./ItemDetail/ItemDetail.jsx";
 
 function ItemDetailContainer() {
     const { id } = useParams();
@@ -11,18 +10,16 @@ function ItemDetailContainer() {
 
     useEffect(() => {
         setLoading(true);
-        getProductoPorId(id).then((res) => {
-        setProducto(res);
-        setLoading(false);
-        });
+        getProductById(id)
+            .then((res) => setProducto(res))
+            .finally(() => setLoading(false));
     }, [id]);
 
-    if (loading) return <p>Cargando detalle...</p>;
-    if (!producto) return <p>Producto no encontrado</p>;
+    if (loading) return <p style={{ padding: "1rem" }}>Cargando detalle...</p>;
+    if (!producto) return <p style={{ padding: "1rem" }}>Producto no encontrado</p>;
 
-    return (
-        <ItemList productos={[producto]} loading={loading} />
-    );
+    return <ItemDetail producto={producto} />;
 }
 
 export default ItemDetailContainer;
+

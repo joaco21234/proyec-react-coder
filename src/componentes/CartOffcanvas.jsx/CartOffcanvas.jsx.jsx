@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import Checkout from '../checkot/checkout';
 
 function CartOffcanvas({ show, handleClose }) {
-    const { cart, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
+    const { cart, eliminarDelCarrito, vaciarCarrito, aumentarCantidad, disminuirCantidad } = useContext(CartContext);
     const [showCheckout, setShowCheckout] = useState(false);
 
     const calcularTotal = () => {
@@ -33,31 +33,31 @@ function CartOffcanvas({ show, handleClose }) {
             .map((p) => `🛒 ${p.nombre} x ${p.cantidad} = $${p.precio * p.cantidad}`)
             .join('\n');
 
-Swal.fire({
-    title: 'Compra realizada con éxito',
-    html: `
-        <div class="swal-checkout-content">
-        <p><strong>Nombre:</strong> ${formData.nombre}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Teléfono:</strong> ${formData.telefono}</p>
-        <hr />
-        <pre style='color: white;'>${resumenProductos}</pre>
-        <p><strong>Total:</strong> $${calcularTotal()}</p>
-        </div>
-    `,
-    icon: 'success',
-    confirmButtonText: 'Cerrar',
-    customClass: {
-        popup: 'swal-checkout-popup',
-        confirmButton: 'swal-confirm-button'
-    },
-    background: '#1b1b1b',
-    color: '#e6dddd',
-}).then(() => {
-    vaciarCarrito();
-    setShowCheckout(false);
-    handleClose();
-});
+        Swal.fire({
+            title: 'Compra realizada con éxito',
+            html: `
+                <div class="swal-checkout-content">
+                    <p><strong>Nombre:</strong> ${formData.nombre}</p>
+                    <p><strong>Email:</strong> ${formData.email}</p>
+                    <p><strong>Teléfono:</strong> ${formData.telefono}</p>
+                    <hr />
+                    <pre style='color: white;'>${resumenProductos}</pre>
+                    <p><strong>Total:</strong> $${calcularTotal()}</p>
+                </div>
+            `,
+            icon: 'success',
+            confirmButtonText: 'Cerrar',
+            customClass: {
+                popup: 'swal-checkout-popup',
+                confirmButton: 'swal-confirm-button'
+            },
+            background: '#1b1b1b',
+            color: '#e6dddd',
+        }).then(() => {
+            vaciarCarrito();
+            setShowCheckout(false);
+            handleClose();
+        });
     };
 
     return (
@@ -97,7 +97,25 @@ Swal.fire({
                                             <br />
                                             <small>Precio unitario: ${producto.precio}</small>
                                             <br />
-                                            <small>Cantidad: {producto.cantidad}</small>
+                                            <div className="d-flex align-items-center gap-2 mt-2">
+                                                <Button
+                                                    variant="outline-secondary"
+                                                    size="sm"
+                                                    onClick={() => disminuirCantidad(producto.id)}
+                                                    disabled={producto.cantidad <= 1}
+                                                >
+                                                    ➖
+                                                </Button>
+                                                <span>{producto.cantidad}</span>
+                                                <Button
+                                                    variant="outline-secondary"
+                                                    size="sm"
+                                                    onClick={() => aumentarCantidad(producto.id)}
+                                                    disabled={producto.cantidad >= 5}
+                                                >
+                                                    ➕
+                                                </Button>
+                                            </div>
                                             <br />
                                             <small>Subtotal: ${producto.precio * producto.cantidad}</small>
                                         </div>
@@ -112,12 +130,10 @@ Swal.fire({
                                 </li>
                             ))}
                         </ul>
-
                         <div className="border-top pt-3 mt-3">
                             <h5 className="text-end">
                                 Total: <span className="fw-bold text-success">${calcularTotal()}</span>
                             </h5>
-
                             <div className="d-flex justify-content-between mt-3">
                                 <Button variant="secondary" onClick={handleVaciarCarrito}>
                                     Vaciar carrito
@@ -135,6 +151,5 @@ Swal.fire({
 }
 
 export default CartOffcanvas;
-
 
 

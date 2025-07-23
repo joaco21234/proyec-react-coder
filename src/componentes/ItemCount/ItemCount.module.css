@@ -1,0 +1,40 @@
+.container {
+    margin-top: 12px;
+    }
+
+    .cantidadRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    }
+
+    .agregarBtn {
+    margin-top: 10px;
+    background: #c77a16;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+    }
+
+    .agregarBtn:hover {
+    background: #3700b3;
+    }
+
+    .incrementBtn, .decrementBtn {
+    background: transparent;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+    }
+
+    .incrementBtn:hover, .decrementBtn:hover {
+    background: #3700b3;
+    }

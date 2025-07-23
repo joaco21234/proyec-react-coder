@@ -21,7 +21,6 @@ function NavBar() {
             <Link className={styles.linkk} to='/iphones'>iPhones</Link>
             <Link className={styles.linkk} to='/ipads'>iPads</Link>
             <Link className={styles.linkk} to='/accesorios'>Accesorios</Link>
-            <Link className={styles.linkk} to='/contacto'>Contacto</Link>
             </div>
 
             <div style={{ flex: 0.4, display: 'flex' }}>

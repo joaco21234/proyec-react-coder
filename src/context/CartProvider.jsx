@@ -13,35 +13,75 @@ function CartProvider({ children }) {
         setCart([]);
     }
 
-function agregarAlCarrito(producto) {
+    function mostrarAlertaMaximo(producto) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Máximo alcanzado',
+            text: `Solo podés agregar hasta 5 unidades de "${producto.nombre}".`,
+            background: '#000',
+            color: '#fff',
+            confirmButtonColor: '#ff9800',
+        });
+    }
+
+function agregarAlCarrito(producto, cantidad = 1) {
     const productoExistente = cart.find((item) => item.id === producto.id);
 
     if (productoExistente) {
-        if (productoExistente.cantidad >= 5) {
+        const nuevaCantidad = productoExistente.cantidad + cantidad;
+
+        if (nuevaCantidad > 5) {
             Swal.fire({
                 icon: 'error',
                 title: 'Máximo alcanzado',
                 text: `Solo podés agregar hasta 5 unidades de "${producto.nombre}".`,
-                background: '#1b1b1b',
-                color: '#e6dddd',
-                showConfirmButton: false,
-                timer: 2000
+                background: '#000',
+                color: '#fff',
+                confirmButtonColor: '#ff9800',
             });
             return false;
         }
 
         const carritoActualizado = cart.map((item) =>
             item.id === producto.id
-                ? { ...item, cantidad: item.cantidad + 1 }
+                ? { ...item, cantidad: nuevaCantidad }
                 : item
         );
         setCart(carritoActualizado);
     } else {
-        setCart([...cart, { ...producto, cantidad: 1 }]);
+        if (cantidad > 5) cantidad = 5;
+        setCart([...cart, { ...producto, cantidad }]);
     }
 
     return true;
 }
+
+
+    function aumentarCantidad(id) {
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.id === id && item.cantidad < 5
+                    ? { ...item, cantidad: item.cantidad + 1 }
+                    : item
+            )
+        );
+    }
+
+    function disminuirCantidad(id) {
+        setCart((prevCart) =>
+            prevCart
+                .map((item) =>
+                    item.id === id
+                        ? { ...item, cantidad: item.cantidad - 1 }
+                        : item
+                )
+                .filter((item) => item.cantidad > 0)
+        );
+    }
+
+    function calcularTotal() {
+        return cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    }
 
     return (
         <CartContext.Provider
@@ -51,8 +91,10 @@ function agregarAlCarrito(producto) {
                 agregarAlCarrito,
                 eliminarDelCarrito,
                 vaciarCarrito,
-                calcularTotal: () =>
-                    cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0),
+                aumentarCantidad,
+                disminuirCantidad,
+                calcularTotal,
+                mostrarAlertaMaximo
             }}
         >
             {children}
@@ -61,3 +103,5 @@ function agregarAlCarrito(producto) {
 }
 
 export default CartProvider;
+
+
